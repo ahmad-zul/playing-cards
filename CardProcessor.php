@@ -28,22 +28,12 @@ class CardProcessor {
         // shuffle the cards
         shuffle($this->cards);
 
-        $playerWithCards = [];
-        for ($i=0; $i<$noOfPlayers; $i++){
-            $player = [];
-            $startEle = $i * $cardsForEachPlayer;
-            $loopRound=0;
-            for ($j=$startEle; $j<$totalCards; $j++) {
-                $loopRound = $loopRound+1;
-                array_push($player, $this->cards[$j]);
-                if ($loopRound >= $cardsForEachPlayer) {
-                    break; // break from the inner loop if the number of loop exceed the max card per player
-                }
-            }
-            array_push($playerWithCards,$player);
+        for($i=0; $i < $noOfPlayers; $i++){
+            $playerWithCards[$i] = [];
+        }
+        for($j=0; $j < sizeof($this->cards);$j++){
+            array_push($playerWithCards[$j % $noOfPlayers], $this->cards[$j]);
         }
         return $playerWithCards;
     }
 }
-
-?>
