@@ -15,9 +15,9 @@ if ($validNo) {
         $playerNo = $i+1;
         echo "Player $playerNo: $playerCards";
         echo "<br />";
-        echo "Size :". sizeof($cards[$i]);
         echo "<br />";
     }
+    echo "<a href='./index.html'>Back to main page</a>";
 } else {
     echo "The number of players entered is not valid";
 }
