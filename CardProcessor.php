@@ -16,13 +16,20 @@ class CardProcessor {
       }
 
     function checkNoOfPlayers($noOfPlayers) {
-        return ($noOfPlayers > 0) ? true : false;
+        if ( strval($noOfPlayers) === strval(intval($noOfPlayers)) ) {
+            return ($noOfPlayers > 0) ? true : false;
+        } else {
+            return false;
+        }
     }
 
     function distributeCard($noOfPlayers) {
+        $player = $this->checkNoOfPlayers($noOfPlayers);
+        if (!$player) {
+            return 'Invalid number of players. Number of player must be an integer greater than 0.';
+        }
         $totalCards = sizeof($this->cards);
         $noOfPlayers = (int) $noOfPlayers;
-        $noOfPlayers = ($noOfPlayers <= 52) ? $noOfPlayers : 52; // force the max player to be 52.
         $cardsForEachPlayer = floor($totalCards / $noOfPlayers); // determine the no of cards per player
         
         // shuffle the cards

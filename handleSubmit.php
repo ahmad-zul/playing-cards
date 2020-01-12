@@ -20,10 +20,11 @@ if ($validNo) {
 
         echo "Player $playerNo: $playerCards";
         echo "<br />";
-        echo "<br />";
+        
     }
-    echo "<a href='./index.html'>Back to main page</a>";
 } else {
-    echo "The number of players entered is not valid";
+    echo "Invalid number of players. Number of player must be an integer greater than 0.";
 }
+echo "<br />";
+echo "<a href='./index.html'>Back to main page</a>";
 ?>
